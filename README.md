@@ -1,4 +1,4 @@
-# API NodePop
+# API NodePop Avanzado
 ## Cargar la Base de datos
 Es necesario inicializar la Base de datos que cargará una colección de documentos necesaria para el funcionamiento de la aplicación.
 
