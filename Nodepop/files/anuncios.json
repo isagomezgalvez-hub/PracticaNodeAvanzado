@@ -1,0 +1,34 @@
+{
+	"anuncios": [
+		{
+			"nombre": "Bicicleta",
+			"venta": true,
+			"precio": 40,
+			"foto": "bici.jpg",
+			"tags": [
+				"lifestyle",
+				"motor"
+			]
+		},
+		{
+			"nombre": "iPhone 5GS",
+			"venta": false,
+			"precio": 50.00,
+			"foto": "iphone.jpg",
+			"tags": [
+				"lifestyle",
+				"mobile"
+			]
+		},
+		{
+			"nombre": "Coche",
+			"venta": false,
+			"precio": 10,
+			"foto": "coche.jpg",
+			"tags": [
+				"lifestyle",
+				"motor"
+			]
+		}
+	]
+}
