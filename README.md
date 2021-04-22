@@ -1,10 +1,28 @@
 # API NodePop Avanzado
-## Cargar la Base de datos
+
+## Desplegar 
+
+```sh npm install```
+
+
+Copia .env.example a .env y reescribe con la configuración de tu base de datos
+
+```sh cp .env.example .en```
+
+
+## Comando para arrancar MongoDB (mac/Linux)
+
+```./bin/mongod --dbpath ./data/db```
+
+
+## Cargar archivos a la Base de Datos
+
 Es necesario inicializar la Base de datos que cargará una colección de documentos necesaria para el funcionamiento de la aplicación.
 
 Para esto utilizamos el siguiente comando 
 
 `npm run installDB`
+
 ## Inicializar servidor
 
 Para iniciar la aplicación lo podemos hacer de dos formas: 
@@ -16,6 +34,8 @@ Para iniciar la aplicación lo podemos hacer de dos formas:
 2. En modo producción, usamos: 
 
 `npm start`
+
+
 
 ##  Lista de Anuncios (Front-end)
 La ruta / nos permitirá mostrar en el Front-end de nuestra aplicación un listado de todos los anuncios registrados en la base de datos MongoDB. Igualmente, en esta ruta también se pueden realizar filtros que hemos aplicado a nuestra API pero que están accesibles también para esta ruta.

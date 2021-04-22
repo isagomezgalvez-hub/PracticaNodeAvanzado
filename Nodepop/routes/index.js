@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
-const { query, param, validationResult } = require('express-validator');
-
-
+const { query, param, validationResult } = require('express-validator')
 const mongoose = require('mongoose');
 const Anuncio = require('../models/Anuncio');
 
 
 /* GET / listing and filters */
 router.get('/', async function (req, res, next) {
+  console.log(res.locals)
   try {
     const nombre = req.query.nombre;
     const precio = req.query.precio;

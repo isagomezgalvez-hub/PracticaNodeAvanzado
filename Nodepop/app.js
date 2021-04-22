@@ -33,6 +33,13 @@ app.use('/apiv1/anuncios', require('./routes/api/anuncios'));
 app.use('/apiv1/anuncios/tags', require('./routes/api/anuncios'));
 
 
+// Setup of i18n
+const i18n = require('./lib/i18nConfigure');
+console.log(i18n.__('Testing'))
+app.use(i18n.init);
+
+
+
 // Routes of Website
 //General list of products
 app.use('/', require('./routes/index'));

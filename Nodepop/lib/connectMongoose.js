@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const mongoBaseDatos = 'mongodb://localhost/nodepop'
+const mongoBaseDatos = process.env.MONGODB_CONNECTION_STR
 
 // Connect to the Database
 mongoose.connect(mongoBaseDatos, {

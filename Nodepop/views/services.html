@@ -1,0 +1,54 @@
+
+
+
+<% include header.html %>
+<body> 
+
+  <section class="section is-widescreen">
+    <main class="container">
+    <h1 class="title text-center">¡Encuentra tu Producto!</h1>
+    <h2 class="subtitle text-center faint">
+     <%= title %>, la plataforma líder de compraventa de productos de Segunda mano
+    </h2>
+   
+      <section id="products">
+    
+        <div class="flex-card-container">
+    
+          <% anuncios.forEach(anuncios=>{%>
+            <article class="flex-card">
+    
+              <img src="./images/<%=anuncios.foto %>">
+              <h2>
+                <%= anuncios.precio %> <span>€</span>
+              </h2>
+              <h3>
+    
+                <%= anuncios.nombre %>
+              </h3>
+    
+    
+              <p>Venta:<%= anuncios.venta %>
+              </p>
+              <span class="tags">
+                <%= anuncios.tags %>
+              </span>
+    
+            </article>
+            <% }) %>
+    
+        </div>
+      </section>
+    </main>
+
+  </section>
+    <% include footer.html %>
+  
+    <div class="wrapper">
+      
+    </div>
+
+
+</body>
+
+</html>

@@ -1,49 +1,9 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-  <title>
-    <%= title %>
-  </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
+<section>
+  <div class="content has-text-centered">
+    <h1>
+    <%=__('Encabezado de Título') %>
+    </h1>
+  </div>
+</section>
 
-<body>
-  <% include header.html %>
-    <div class="wrapper">
-      <main class="main-container">
-        <section id="products">
-          <div class="header">
-            <h2>Artículos Destacados</h2>
-          </div>
-          <div class="flex-card-container">
-
-            <% anuncios.forEach(anuncios=>{%>
-              <article class="flex-card">
-                <img src="./images/<%=anuncios.foto %>">
-                <h2>
-                  <%= anuncios.precio %> <span>€</span>
-                </h2>
-                <h3>
-                  <%= anuncios.nombre %>
-                </h3>
-
-
-                <p>Venta:<%= anuncios.venta %>
-                </p>
-                <span class="tags">
-                  <%= anuncios.tags %>
-                </span>
-
-              </article>
-              <% }) %>
-
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <% include footer.html %>
-</body>
-
-</html>

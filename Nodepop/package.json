@@ -12,11 +12,13 @@
     "cookie-parser": "~1.4.4",
     "cross-env": "^7.0.3",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-validator": "^6.9.2",
     "fs": "0.0.1-security",
     "http-errors": "~1.6.3",
+    "i18n": "^0.13.2",
     "install": "^0.13.0",
     "mongoose": "^5.11.13",
     "morgan": "~1.9.1"
