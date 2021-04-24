@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const {Usuario, Anuncio} = require('./models');
 
 
+
 const { nextTick } = require('process');
 const { read, readFile, readFileSync } = require('fs');
 
@@ -53,7 +54,7 @@ async function initUsuarios() {
 	const result = await Usuario.insertMany(
 		{
 			email: 'admin@example.com',
-			password: '1234'
+			password: await Usuario.hashPassword('1234')
 		}
 		
 	);

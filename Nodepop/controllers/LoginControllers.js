@@ -26,9 +26,9 @@ class LoginController {
 
 			// Si no encontramos email usuario => error
 			// Si no coincide la contraseña =>error
-			//TODO hashear las contraseñas!!!
+		
 
-			if(!usuario || usuario.password !==password){
+			if (!usuario || !(await usuario.comparePassword(password))){
 				res.locals.email = email;
 				res.locals.error = 'Invalid Credentials';
 				res.render('login');
