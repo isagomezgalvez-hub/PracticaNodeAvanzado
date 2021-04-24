@@ -44,6 +44,7 @@ app.use(i18n.init);
 app.use('/', require('./routes/index'));
 app.get('/login', require('./controllers/LoginControllers').index);
 app.post('/login', require('./controllers/LoginControllers').post);
+app.get('/private', require('./controllers/PrivateControllers').index);
 //app.use('/anuncios', require('./routes/index'));
 
 
