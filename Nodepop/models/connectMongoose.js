@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 const mongoose = require('mongoose');
 const mongoBaseDatos = process.env.MONGODB_CONNECTION_STR

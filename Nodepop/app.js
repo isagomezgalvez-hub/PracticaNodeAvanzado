@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var app = express();
 
-const conectionBD = require('./lib/connectMongoose.js');
+const conectionBD = require('./models/connectMongoose.js');
 
 
 // view engine setup
@@ -35,7 +35,6 @@ app.use('/apiv1/anuncios/tags', require('./routes/api/anuncios'));
 
 // Setup of i18n
 const i18n = require('./lib/i18nConfigure');
-console.log(i18n.__('Testing'))
 app.use(i18n.init);
 
 
@@ -43,6 +42,8 @@ app.use(i18n.init);
 // Routes of Website
 //General list of products
 app.use('/', require('./routes/index'));
+app.get('/login', require('./controllers/LoginControllers').index);
+app.post('/login', require('./controllers/LoginControllers').post);
 //app.use('/anuncios', require('./routes/index'));
 
 

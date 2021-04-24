@@ -7,7 +7,7 @@ const Anuncio = require('../models/Anuncio');
 
 /* GET / listing and filters */
 router.get('/', async function (req, res, next) {
-  console.log(res.locals)
+
   try {
     const nombre = req.query.nombre;
     const precio = req.query.precio;
@@ -56,7 +56,7 @@ router.get('/', async function (req, res, next) {
     const sort = req.query.sort;
 
     const resultado = await Anuncio.lista(filtro, limit, skip, fields, sort);
-    res.locals = { anuncios: resultado }
+    res.locals = { ...res.locals, anuncios: resultado }
     res.render('index');
   } catch (err) {
     next(err)

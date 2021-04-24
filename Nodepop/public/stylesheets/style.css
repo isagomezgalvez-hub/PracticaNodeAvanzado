@@ -29,6 +29,15 @@ a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navb
   background-color:#ECEFF1;
 }
 
+.form{
+  padding: 3rem;
+ 
+  background-color: white;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 0 rgb(0 0 0 / 10%);
+}
 .flex-card-container{
 	 display: flex;
 	 flex-direction: row;

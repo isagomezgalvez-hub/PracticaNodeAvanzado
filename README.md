@@ -15,13 +15,11 @@ Copia .env.example a .env y reescribe con la configuración de tu base de datos
 ```./bin/mongod --dbpath ./data/db```
 
 
-## Cargar archivos a la Base de Datos
+## Inicializar Base de Datos
 
-Es necesario inicializar la Base de datos que cargará una colección de documentos necesaria para el funcionamiento de la aplicación.
+Si deseas resetear la Base de datos y cargar datos iniciales de producto y usuarios puedes ejecutar:
 
-Para esto utilizamos el siguiente comando 
-
-`npm run installDB`
+`npm run initDB`
 
 ## Inicializar servidor
 
