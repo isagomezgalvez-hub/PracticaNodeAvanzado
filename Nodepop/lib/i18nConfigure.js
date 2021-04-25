@@ -9,7 +9,7 @@ i18n.configure({
 	defaultLocale: 'en',
 	autoReload: true, 
 	syncFiles: true, 
-	cookie: 'nodeapi-locale'
+	cookie: 'nodepop-locale'
 });
 
 // por si usamos i18n en scripts

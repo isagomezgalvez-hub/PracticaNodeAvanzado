@@ -53,10 +53,10 @@ app.use(session({
 }));
 
 
-
 // Routes of Website
 //General list of products
 app.use('/', require('./routes/index'));
+app.use('/change-locale', require('./routes/change-locale'));
 app.get('/login', require('./controllers/LoginControllers').index);
 app.post('/login', require('./controllers/LoginControllers').post);
 app.get('/private', require('./controllers/PrivateControllers').index);

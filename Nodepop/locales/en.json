@@ -1,8 +1,12 @@
 {
-	"Hello": "Hello",
-	"Testing": "Testing",
-	"¡Encuentra tu Producto!": "¡Find your Product!",
-	"¡My Account!": "¡My Account!",
-	"My Account": "My Account",
-	"Dashboard": "Dashboard"
+	"Dashboard": "Dashboard",
+	"Home": "Home",
+	"Documentacion": "Documentacion",
+	"Overview": "Overview",
+	"+ Uploads Product": "+ Uploads Product",
+	"© 2021 - All rights reserved": "© 2021 - All rights reserved",
+	"Login": "Login",
+	"Find your Product!": "Find your Product!",
+	"{{title}}, the leading platform for buying and selling of second-hand products": "{{title}}, the leading platform for buying and selling of second-hand products",
+	"Invalid Credentials": "Invalid Credentials"
 }

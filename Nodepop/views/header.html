@@ -32,17 +32,17 @@
 	<div id="navbarBasicExample" class="navbar-menu">
 		<div class="navbar-start">
 			<a class="navbar-item">
-				Home
+				<%=__('Home') %>
 			</a>
 
 			<a class="navbar-item">
-				Documentacion
+				<%=__('Documentacion') %>
 				
 			</a>
 
 			<div class="navbar-dropdown">
 				<a class="navbar-item">
-					Overview
+					<%=__('Overview') %>
 				</a>
 			</div>
 
@@ -58,12 +58,12 @@
 						</a>
 				
 						<div class="navbar-dropdown">
-							<a class="navbar-item">
-								EN
-							</a>
-							<a class="navbar-item">
-								ES
-							</a>
+							<% getLocales().forEach(locale=> { %>
+								<a class="navbar-item" href="/change-locale/<%= locale %>">
+									<%= locale %>
+								</a>
+								<% }) %>
+							
 						</div>
 					</div>
 				
@@ -71,10 +71,10 @@
 			<div class="navbar-item">
 				<div class="buttons">
 					<a class="button is-light" href="/login">
-						<strong>Inicia Sesión</strong>
+						<strong><%=__('Login') %></strong>
 					</a>
 					<a class="button is-primary">
-						+ Subir Producto
+						<%=__('+ Uploads Product') %>
 					</a>
 				</div>
 			</div>

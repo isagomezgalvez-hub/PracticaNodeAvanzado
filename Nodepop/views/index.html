@@ -4,9 +4,9 @@
 
     <section class="section is-widescreen">
       <main class="container">
-        <h1 class="title text-center"><%=__('¡Encuentra tu Producto!') %></h1>
+        <h1 class="title text-center"><%=__('Find your Product!') %></h1>
         <h2 class="subtitle text-center faint">
-          <%= title %>, la plataforma líder de compraventa de productos de Segunda mano
+          <%= __('{{title}}, the leading platform for buying and selling of second-hand products', {title}) %>
         </h2>
 
         <section id="products">
@@ -41,10 +41,6 @@
 
     </section>
     <% include footer.html %>
-
-      <div class="wrapper">
-
-      </div>
 
 
   </body>

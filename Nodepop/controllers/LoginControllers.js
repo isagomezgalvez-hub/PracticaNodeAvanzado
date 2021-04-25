@@ -30,7 +30,7 @@ class LoginController {
 
 			if (!usuario || !(await usuario.comparePassword(password))){
 				res.locals.email = email;
-				res.locals.error = 'Invalid Credentials';
+				res.locals.error = res.__('Invalid Credentials');
 				res.render('login');
 				return
 			}
