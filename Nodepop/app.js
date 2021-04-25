@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 var app = express();
 
@@ -36,6 +37,20 @@ app.use('/apiv1/anuncios/tags', require('./routes/api/anuncios'));
 // Setup of i18n
 const i18n = require('./lib/i18nConfigure');
 app.use(i18n.init);
+
+
+// Middleware Create Session to Website
+
+app.use(session({
+  name: 'nodepop-session',
+  secret: 'dsa987ad10/)H(/G()/9sa7d98',
+  saveUninitialized: true,
+  resave:false,
+  cookie: {
+    secure:true, // solo se envian al servidor cuando la petición es HTTPs
+    maxAge: 1000 * 60 * 60 * 24 * 2 // dos dias de inactividad
+  }
+}));
 
 
 

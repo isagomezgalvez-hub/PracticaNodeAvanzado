@@ -2,7 +2,14 @@
 
 class PrivateController {
 	index(req,res,next){
-		res.render('private')
+		console.log(req.session)
+		if (!req.session.usuarioLogeado) {
+			res.redirect('/login');
+			return;
+		} 
+
+		res.redirect('/private')
+		
 	}
 }
 

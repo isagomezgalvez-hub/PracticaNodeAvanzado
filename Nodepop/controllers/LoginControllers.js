@@ -22,7 +22,7 @@ class LoginController {
 
 			/// Buscar usuario en la Base de datos
 			const usuario = await Usuario.findOne({ email })
-			console.log(usuario)
+			
 
 			// Si no encontramos email usuario => error
 			// Si no coincide la contraseña =>error
@@ -36,7 +36,15 @@ class LoginController {
 			}
 
 			//Si el usuario existe y la clave coincide redireccionar al área privada
+
+			// apuntar en la sesión de usuario su _id
+			req.session.usuarioLogeado = {
+				_id: usuario._id
+			}
+
+			//redirecciono a la pagina privado
 			res.redirect('/private')
+			
 
 		}catch(error){
 			next(error)
