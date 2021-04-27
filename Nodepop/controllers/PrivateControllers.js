@@ -1,16 +1,15 @@
 'use strict';
 
-class PrivateController {
-	index(req,res,next){
-		console.log(req.session)
-		if (!req.session.usuarioLogeado) {
-			res.redirect('/login');
-			return;
-		} 
+class PrivadoController {
 
-		res.redirect('/private')
+	/**
+	 * GET /privado
+	 */
+	index(req, res, next) {
+		res.render('privado');
 		
 	}
+
 }
 
-module.exports = new PrivateController();
+module.exports = new PrivadoController();

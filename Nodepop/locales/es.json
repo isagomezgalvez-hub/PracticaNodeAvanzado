@@ -8,5 +8,6 @@
 	"Login": "Inicia Sesión",
 	"Find your Product!": "¡Encuentra tu producto!",
 	"{{title}}, the leading platform for buying and selling of second-hand products": "{{title}}, la principal plataforma de compra y venta de productos de segunda mano",
-	"Invalid Credentials": "Credenciales inválidas"
+	"Invalid Credentials": "Credenciales inválidas",
+	"Logout": "Logout"
 }

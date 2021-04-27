@@ -4,10 +4,10 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 const Anuncio = require('../../models/Anuncio');
-
+const jwtAuth = require('../../lib/jwtAuth')
 
 /* GET /apiv1/anuncios API listing and filters */
-router.get('/', async function (req, res, next) {
+router.get('/', jwtAuth, async function (req, res, next) {
 	try {
 		const nombre = req.query.nombre;
 		const venta = req.query.venta;
