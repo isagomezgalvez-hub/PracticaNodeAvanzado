@@ -21,6 +21,7 @@ Si deseas resetear la Base de datos y cargar datos iniciales de producto y usuar
 
 `npm run initDB`
 
+
 ## Inicializar servidor
 
 Para iniciar la aplicación lo podemos hacer de dos formas: 
@@ -33,7 +34,9 @@ Para iniciar la aplicación lo podemos hacer de dos formas:
 
 `npm start`
 
+## Inicializar conversionService
 
+```npm run conversionService```
 
 ##  Lista de Anuncios (Front-end)
 La ruta / nos permitirá mostrar en el Front-end de nuestra aplicación un listado de todos los anuncios registrados en la base de datos MongoDB. Igualmente, en esta ruta también se pueden realizar filtros que hemos aplicado a nuestra API pero que están accesibles también para esta ruta.

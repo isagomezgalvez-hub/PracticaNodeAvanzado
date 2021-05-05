@@ -1,6 +1,7 @@
 'use strict';
 const jwt = require('jsonwebtoken');
 const { Usuario } = require('../models');
+const nodemailer = require('nodemailer')
 
 class LoginController {
 
@@ -29,7 +30,6 @@ class LoginController {
 			// Si no encontramos email usuario => error
 			// Si no coincide la contraseña =>error
 		
-
 			if (!usuario || !(await usuario.comparePassword(password))){
 				res.locals.email = email;
 				res.locals.error = res.__('Invalid Credentials');
@@ -44,10 +44,14 @@ class LoginController {
 				_id: usuario._id
 			}
 
-			//redirecciono a la pagina privado
-			//TODO debe ir a la pagina PRivate
-			res.redirect('/testing');
-			
+
+			//mandar un email al usuario
+			const info = await usuario.enviaEmail('Este es el asunto', 'Bienvenido a NodePop');
+			console.log("Message sent: %s", info.messageId);
+			console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+		
+			//redirecciono a la pagina Dashboard(Area Privada)
+			res.redirect('/privado');
 
 		}catch(error){
 			next(error)
@@ -63,42 +67,37 @@ class LoginController {
 	async postJWT(req, res, next) {
 		try {
 			const { email, password } = req.body;
-
-
 			/// Buscar usuario en la Base de datos
 			const usuario = await Usuario.findOne({ email })
 
-
-			// Si no encontramos email usuario => error
-			// Si no coincide la contraseña =>error
-
-
+			// si no lo encontramos --> error
+			// si no coincide la clave --> error
 			if (!usuario || !(await usuario.comparePassword(password))) {
-				const error = new Error('Invalid Credentials');
+
+				const error = new Error('invalid credentials');
 				error.status = 401;
-				next(error)
+				next(error);
 				return;
 			}
 
-			//Si el usuario existe y la clave coincide redireccionar al área privada
+
+			// si el usuario existe y la clave coincide
 			// crear un token JWT (firmado) 
-			jwt.sign({ _id: usuario._id },'process.env.JWT_SECRET', {expiresIn:'2h'}, (error, jwtToken )=>{
+
+			jwt.sign({ _id: usuario._id },process.env.JWT_SECRET, {expiresIn: '2h' }, (error, jwtToken )=>{
 				if(error){
 					next(error);
 					return;
 				}
 				//devolver al cliente el token
 				res.json({token: jwtToken})
-				
 			});
 			
-
 		} catch (error) {
 			next(error)
 		}
 
 	}
-
 
 	/**
    * GET /logout

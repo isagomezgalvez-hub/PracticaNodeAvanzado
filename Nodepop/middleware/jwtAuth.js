@@ -17,12 +17,14 @@ module.exports = (req,res,next) =>{
 	
 	// comprobar que el token es válido
 	jwt.verify(jwtToken, process.env.JWT_SECRET, (error, payload)=>{
-		if(error){
-			const error = new Error('invalid token provided');
+
+		if (error){
 			error.status = 401
 			next(error);
 			return;
+
 		}
+		
 		req.apiAuthUserID = payload._id;
 		next();
 	})

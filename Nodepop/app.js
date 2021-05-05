@@ -4,11 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
-const sesionAuth = require('./lib/sesionAuthMiddleware');
+const sessionAuth = require('./middleware/sesionAuthMiddleware');
 const loginController = require('./controllers/LoginControllers')
 const MongoStore = require('connect-mongo');
 
 var app = express();
+
+
 
 const conectionBD = require('./models/connectMongoose.js');
 
@@ -33,9 +35,9 @@ app.use('/users', require('./routes/users'));
 
 
 //Routes of Api
-app.post('/apiv1/authenticate', loginController.postJWT);
-app.use('/apiv1/anuncios', require('./routes/api/anuncios'));
-app.use('/apiv1/anuncios/tags', require('./routes/api/anuncios'));
+app.post('/api/authenticate', loginController.postJWT);
+app.use('/api/anuncios', require('./routes/api/anuncios'));
+app.use('/api/anuncios/tags', require('./routes/api/anuncios'));
 
 
 
@@ -54,7 +56,7 @@ app.use(session({
   resave:false,
   cookie: {
     //secure:true, // solo se envian al servidor cuando la petición es HTTPs
-    secure: process.env.NODE_ENV !== 'development', // solo se envian al servidor cuando la petición es HTTPS
+    //secure: process.env.NODE_ENV !== 'development', // solo se envian al servidor cuando la petición es HTTPS
     maxAge: 1000 * 60 * 60 * 24 * 2 // dos dias de inactividad
   },
   store:MongoStore.create({
@@ -73,13 +75,13 @@ app.use((req,res,next) => {
 //General list of products
 app.use('/', require('./routes/index'));
 app.use('/change-locale', require('./routes/change-locale'));
-app.get('/testing', require('./controllers/testingController').index);
 app.get('/login', loginController.index);
 app.post('/login', loginController.post);
 app.get('/logout', loginController.logout);
-app.get('/privado', sesionAuth, require('./controllers/PrivateControllers').index);
-//app.use('/anuncios', require('./routes/index'));
 
+app.get('/privado', sessionAuth, require('./controllers/PrivateControllers').index);
+
+//app.use('/anuncios', require('./routes/index'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

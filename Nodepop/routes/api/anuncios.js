@@ -4,9 +4,26 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 const Anuncio = require('../../models/Anuncio');
-const jwtAuth = require('../../lib/jwtAuth')
+const jwtAuth = require('../../middleware/jwtAuth')
+const fs = require('fs');
+const multer = require('multer');
+const path = require('path')
+const cote = require('cote');
 
-/* GET /apiv1/anuncios API listing and filters */
+// Almacenar imagenes
+const storage = multer.diskStorage({
+	destination: path.join(__dirname, '../../public/images'),
+	filename: (req, file, cb) => {
+		cb(null, file.originalname)
+	}
+})
+
+
+var upload = multer({ storage: storage })
+
+
+
+/* GET /api/anuncios API listing and filters */
 router.get('/', jwtAuth, async function (req, res, next) {
 	try {
 		const nombre = req.query.nombre;
@@ -67,7 +84,7 @@ router.get('/', jwtAuth, async function (req, res, next) {
 });
 
 
-/* GET /apiv1/anuncios/tags  */
+/* GET /api/anuncios/tags  */
 //Obtener un listado de tag existentes
 router.get('/tags', async (req, res, next) => {
 	try {
@@ -84,7 +101,7 @@ router.get('/tags', async (req, res, next) => {
 })
 
 
-/* GET /apiv1/anuncios:id */
+/* GET /api/anuncios:id */
 //Obtener un anuncio
 
 router.get('/:id', async (req, res, next) => {
@@ -101,16 +118,43 @@ router.get('/:id', async (req, res, next) => {
 	}
 })
 
-/* POST /apiv1/anuncios (body) - Ads products (ads) */
-router.post('/', async (req, res, next) => {
+/* POST /api/anuncios (body) - Ads products (ads) */
+router.post('/', upload.single('foto'), async (req, res, next) => {
+
+	
+
 	try {
+		//almacenamos la imagen
+		const file = req.file
+
 		const AnuncioData = req.body;
 		const anuncio = new Anuncio(AnuncioData)
+		anuncio.foto =  file.filename 
+
 		const productCreated = await anuncio.save();
 		res.status(201).json({ result: productCreated });
+
+	
+		//llamando al microservicio
+		
+		const requester = new cote.Requester({ name: 'Client: gimme-thumbnail' });
+
+		const request = {
+				type: 'resize',
+				img: file.path,
+				name:file.filename,
+				destination: file.destination
+				};
+			console.log(file)
+		requester.send(request, result => {
+				console.log('gimme-thumnail result:', result);
+		});
+		
+		
 	} catch (error) {
 		next(error)
 	}
+
 })
 
 module.exports = router;

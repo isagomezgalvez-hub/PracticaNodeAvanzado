@@ -31,21 +31,16 @@
 
 	<div id="navbarBasicExample" class="navbar-menu">
 		<div class="navbar-start">
-			<a class="navbar-item">
+			<a class="navbar-item" href="/">
 				<%=__('Home') %>
 			</a>
 
-			<a class="navbar-item">
-				<%=__('Documentacion') %>
-				
+		
+			<% if(session.usuarioLogado){ %>
+			<a class="navbar-item" href="/privado">
+				<%=__('Dashboard') %>
 			</a>
-
-			<div class="navbar-dropdown">
-				<a class="navbar-item">
-					<%=__('Overview') %>
-				</a>
-			</div>
-
+			<% } %>
 		
 			
 		</div>
@@ -71,19 +66,19 @@
 			<div class="navbar-item">
 				<div class="buttons">
 					
-					
+					<% if(! session.usuarioLogado){ %>
 					<a class="button is-light" href="/login">
 						<strong><%=__('Login') %></strong>
 					</a>
-					
+					<% } else { %>
 
-					<a class="button is-light">
+					<a class="button is-light" href="/logout">
 						<strong>
 							<%=__('Logout') %>
 						</strong>
 					</a>
 
-
+					<% } %>
 					<a class="button is-primary">
 						<%=__('+ Uploads Product') %>
 					</a>
