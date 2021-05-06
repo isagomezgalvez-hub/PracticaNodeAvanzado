@@ -121,8 +121,6 @@ router.get('/:id', async (req, res, next) => {
 /* POST /api/anuncios (body) - Ads products (ads) */
 router.post('/', upload.single('foto'), async (req, res, next) => {
 
-	
-
 	try {
 		//almacenamos la imagen
 		const file = req.file
@@ -136,7 +134,7 @@ router.post('/', upload.single('foto'), async (req, res, next) => {
 			anuncio.foto =  file.filename 
 
 			// Se llama al microservicio para generar el thumnails
-			const requester = new cote.Requester({ name: 'Client: gimme-thumbnail' });
+			const requester = new cote.Requester({ name: 'Client: gimme-thumbnail'});
 
 			const request = {
 				type: 'resize',
@@ -145,7 +143,7 @@ router.post('/', upload.single('foto'), async (req, res, next) => {
 				destination: file.destination
 			};
 
-			requester.send(request, result => {
+			requester.send(request, result => {				
 				console.log('gimme-thumnail result:', result);
 			});
 
@@ -153,10 +151,6 @@ router.post('/', upload.single('foto'), async (req, res, next) => {
 		const productCreated = await anuncio.save();
 		res.status(201).json({ result: productCreated });
 
-	
-		
-		
-		
 	} catch (error) {
 		next(error)
 	}

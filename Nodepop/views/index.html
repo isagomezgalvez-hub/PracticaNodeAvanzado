@@ -22,12 +22,14 @@
                   <%= anuncios.precio %> <span>€</span>
                 </h2>
                 <h3>
-
                   <%= anuncios.nombre %>
                 </h3>
 
+                
+                 
 
-                <p>Venta:<%= anuncios.venta %>
+            
+                <p><%= (anuncios.venta) ? __('Venta') : __('Búsqueda') %>
                 </p>
                 <span class="tags">
                   <%= anuncios.tags %>
