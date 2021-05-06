@@ -129,26 +129,32 @@ router.post('/', upload.single('foto'), async (req, res, next) => {
 
 		const AnuncioData = req.body;
 		const anuncio = new Anuncio(AnuncioData)
-		anuncio.foto =  file.filename 
 
+		if(file){
+
+			// Se añade la imagen al anuncio
+			anuncio.foto =  file.filename 
+
+			// Se llama al microservicio para generar el thumnails
+			const requester = new cote.Requester({ name: 'Client: gimme-thumbnail' });
+
+			const request = {
+				type: 'resize',
+				img: file.path,
+				name: file.filename,
+				destination: file.destination
+			};
+
+			requester.send(request, result => {
+				console.log('gimme-thumnail result:', result);
+			});
+
+		}
 		const productCreated = await anuncio.save();
 		res.status(201).json({ result: productCreated });
 
 	
-		//llamando al microservicio
 		
-		const requester = new cote.Requester({ name: 'Client: gimme-thumbnail' });
-
-		const request = {
-				type: 'resize',
-				img: file.path,
-				name:file.filename,
-				destination: file.destination
-				};
-			console.log(file)
-		requester.send(request, result => {
-				console.log('gimme-thumnail result:', result);
-		});
 		
 		
 	} catch (error) {
