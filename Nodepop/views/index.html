@@ -15,25 +15,29 @@
 
             <% anuncios.forEach(anuncios=>{%>
               <article class="flex-card">
-             
-                <img src="./images/<%=anuncios.foto %>">
+                <% if (anuncios.foto){ %>
+                  <img src="./images/<%=anuncios.foto %>">
+                <% }else{ %> 
+                 <img src="https://bulma.io/images/placeholders/128x128.png">
+                <% } %>
                 
-                <h2>
-                  <%= anuncios.precio %> <span>€</span>
-                </h2>
-                <h3>
-                  <%= anuncios.nombre %>
-                </h3>
+                <div class="columns">
+                  <div class="column is-three-quarters">
+                    <h3 class="title-product">
+                      <%= anuncios.precio %> <span>€</span>
+                    </h3>
+                    <p><%= anuncios.nombre %></p>
+                    <span class="tags tags-product">
+                        <%= anuncios.tags %>
+                     </span>
+                  </div>
 
-                
-                 
-
-            
-                <p><%= (anuncios.venta) ? __('Venta') : __('Búsqueda') %>
-                </p>
-                <span class="tags">
-                  <%= anuncios.tags %>
-                </span>
+                  <div class="column auto">
+                    <p class="sale-product">
+                      <%= (anuncios.venta) ? __('Venta') : __('Búsqueda') %>
+                    </p>
+                 </div>
+                </div>
 
               </article>
               <% }) %>

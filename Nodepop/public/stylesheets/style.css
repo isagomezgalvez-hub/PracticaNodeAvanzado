@@ -61,7 +61,31 @@ a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navb
 }
  
 
+.title-product{
+     margin-top: 8px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #253238;
+}
 
+.sale-product{
+   margin-top: 8px;
+  font-size: 0.9rem;
+  padding: 0.5px;
+  background-color: #00d1b2;
+  border-color: transparent;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  font-weight: 800;
+}
+
+.tags-product{
+    margin-top: 2px;
+    font-size: 1rem;
+    color: #90A4AE;
+    line-height: 1.2;
+}
 .text-center{
     text-align: center;
     line-height: 1.5;
