@@ -86,6 +86,11 @@ a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navb
     color: #90A4AE;
     line-height: 1.2;
 }
+.error-message{
+    color: #cc0f35;
+    margin: 10px 0;
+    border-radius: .375em;
+}
 .text-center{
     text-align: center;
     line-height: 1.5;

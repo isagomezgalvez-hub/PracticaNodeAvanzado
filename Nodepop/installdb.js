@@ -51,17 +51,13 @@ async function initUsuarios() {
 	const { deletedCount } = await Usuario.deleteMany();
 	console.log(`Eliminados ${deletedCount} usuarios.`);
 
-	const result = await Usuario.insertMany([
+	const result = await Usuario.insertMany(
 		{
 			email: 'user@example.com',
 			password: await Usuario.hashPassword('1234')
-		},
-		{
-			email: 'hello@isagomez.com',
-			password: await Usuario.hashPassword('1234')
 		}
 		
-	]);
+	);
 	console.log(`Insertados ${result.length} usuario${result.length > 1 ? 's' : ''}.`)
 }
 
