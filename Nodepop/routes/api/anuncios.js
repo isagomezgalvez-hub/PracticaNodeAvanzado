@@ -143,7 +143,7 @@ router.post('/', upload.single('foto'), async (req, res, next) => {
 				destination: file.destination
 			};
 
-			requester.send(request, result => {				
+			await requester.send(request, result => {				
 				console.log('gimme-thumnail result:', result);
 			});
 
