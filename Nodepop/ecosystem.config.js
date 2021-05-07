@@ -3,7 +3,7 @@ module.exports = {
     script: './bin/www',
     watch: '.'
   }, {
-    script: '../Nodepop/microservices/thumnailsServices.js',
+    script: './Nodepop/microservices/thumnailsServices.js',
     //watch: ['./service-worker']
   }],
 
